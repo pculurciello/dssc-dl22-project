@@ -1,34 +1,37 @@
-# Jupyter Notebook with Pytorch
+# Jupyter Notebook with Pytorch for DSSC DL22 final Project
 
-This docker image supports with jupyter, pytorch and cuda.
+This docker image is based on https://github.com/Tverous/pytorch-notebook
 
 ## Run the container
 
 ### Start the container with only CPU support:
 ```
 docker run --rm -it  \
+           --name CONTAINER_NAME
            -p 8888:8888  \
-           -e JUPYTER_TOKEN=passwd  \
-           tverous/pytorch-notebook:latest
+           -e JUPYTER_TOKEN=NOTEBOOK_PASSWORD  \
+           pculurciello/pytorch-notebook-dssc-dl22:latest
 ```
 
 ### Start the container with GPUs support:
 ```
 docker run --rm -it  \
            --gpus all  \
+           --name CONTAINER_NAME
            -p 8888:8888  \
-           -e JUPYTER_TOKEN=passwd  \
-           tverous/pytorch-notebook:latest
+           -e JUPYTER_TOKEN=NOTEBOOK_PASSWORD  \
+           pculurciello/pytorch-notebook-dssc-dl22:latest
 ```
 
 ### Start the container with volumes:
 ```
 docker run --rm -it  \
            --gpus all  \
+           --name CONTAINER_NAME
            -p 8888:8888  \
-           -e JUPYTER_TOKEN=passwd \
+           -e JUPYTER_TOKEN=NOTEBOOK_PASSWORD  \
            -v /local_vol:/docker_vol  \
-           tverous/pytorch-notebook:latest
+           pculurciello/pytorch-notebook-dssc-dl22:latest
 ```
 
 ## Launch Jupyter Notebook
@@ -52,11 +55,11 @@ Press `Ctrl + p` and `Ctrl + q` to detach the tty.
 
 ## References:
 ```
-docker run --rm \                       # remove the container when it exits
-           -it \                        # pseudo-TTY
-           -p 8888:8888 \               # port forwarding: <Host>:<Container>
-           --gpus all \                 # support all gpus (docker > 19.03)
-           -v /local_vol:/docker_vol \  # volume: mapping local folder to container
-           -e JUPYTER_TOKEN=passwd \    # Jupyter password: passwd
-           -d tverous/pytorch-notebook:latest
+docker run --rm \                                                 # remove the container when it exits
+           -it \                                                  # pseudo-TTY
+           -p 8888:8888 \                                         # port forwarding: <Host>:<Container>
+           --gpus all \                                           # support all gpus (docker > 19.03)
+           -v /local_vol:/docker_vol \                            # volume: mapping local folder to container
+           -e JUPYTER_TOKEN=NOTEBOOK_PASSWORD \                   # Jupyter password: NOTEBOOK_PASSWORD
+           pculurciello/pytorch-notebook-dssc-dl22:latest
 ```
