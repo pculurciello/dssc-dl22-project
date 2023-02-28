@@ -1,9 +1,10 @@
 import csv
 import os
 
-# write CSV file with rows [file_name,class]
-# the resulting CSV file contains audio samples from the audio_dir directory mixed with all the audio samples from the ESC-10 dataset.
 
+# write CSV file with rows [file_name,class]
+# the resulting CSV file contains audio samples from the audio_dir directory 
+# mixed with all the audio samples from the ESC-10 dataset.
 def write_csv(audio_dir, csv_file):
 
     # open the file in the write mode
